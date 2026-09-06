@@ -9,6 +9,7 @@ const {
     connectMongoDB,
     getDatabase
 } = require('./config/mongodb');
+const dashboardRoutes = require('./routes/dashboardRoutes');
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/api/dashboard', dashboardRoutes);
 
 
 app.get('/api/test', async (req, res) => {
