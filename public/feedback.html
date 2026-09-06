@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Donor Feedback - LifeLine Connect</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>LifeLine Connect</h2>
+
+        <a href="index.html">Dashboard</a>
+        <a href="donors.html">Donors</a>
+        <a href="camps.html">Camps</a>
+        <a href="inventory.html">Blood Inventory</a>
+        <a href="requests.html">Hospital Requests</a>
+        <a href="feedback.html" class="active">Feedback</a>
+        <a href="emergency.html">Emergency Appeals</a>
+
+    </div>
+
+
+    <div class="main-content">
+
+        <div class="page-header">
+
+            <div>
+                <h1>Donor Feedback</h1>
+                <p>View donor experiences and camp ratings</p>
+            </div>
+
+        </div>
+
+
+        <!-- Statistics -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <h3>Total Feedback</h3>
+                <p id="totalFeedback">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Average Rating</h3>
+                <p id="averageRating">0.0</p>
+            </div>
+
+        </div>
+
+
+        <!-- Top Rated Camps -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+                <h2>Top Rated Camps</h2>
+            </div>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Camp ID</th>
+                        <th>Average Rating</th>
+                        <th>Total Reviews</th>
+                    </tr>
+                </thead>
+
+                <tbody id="topRatedTable">
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- Feedback -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>Recent Feedback</h2>
+
+                <input
+                    type="text"
+                    id="feedbackSearch"
+                    placeholder="Search feedback..."
+                    onkeyup="filterFeedback()"
+                >
+
+            </div>
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Feedback ID</th>
+                        <th>Camp</th>
+                        <th>Venue</th>
+                        <th>Rating</th>
+                        <th>Title</th>
+                        <th>Comment</th>
+                        <th>Type</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="feedbackTable">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/feedback.js"></script>
+
+</body>
+
+</html>

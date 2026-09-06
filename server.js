@@ -14,6 +14,7 @@ const donorRoutes = require('./routes/donorRoutes');
 const campRoutes = require('./routes/campRoutes');
 const inventoryRoutes = require('./routes/inventoryRoutes');
 const requestRoutes = require('./routes/requestRoutes');
+const feedbackRoutes = require('./routes/feedbackRoutes');
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use('/api/donors', donorRoutes);
 app.use('/api/camps', campRoutes);
 app.use('/api/inventory', inventoryRoutes);
 app.use('/api/requests', requestRoutes);
+app.use('/api/feedback', feedbackRoutes);
 
 
 app.get('/api/test', async (req, res) => {
