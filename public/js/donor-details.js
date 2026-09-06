@@ -61,34 +61,34 @@ async function loadDonorDetails() {
 function displayDonor(donor) {
 
     document.getElementById('donorId').textContent =
-        donor.DONOR_ID;
+        donor.donor_id;
 
     document.getElementById('donorName').textContent =
-        `${donor.FIRST_NAME} ${donor.LAST_NAME}`;
+        `${donor.first_name} ${donor.last_name}`;
 
     document.getElementById('dateOfBirth').textContent =
-        formatDate(donor.DATE_OF_BIRTH);
+        formatDate(donor.date_of_birth);
 
     document.getElementById('gender').textContent =
-        donor.GENDER || '-';
+        donor.gender || '-';
 
     document.getElementById('nic').textContent =
-        donor.NIC;
+        donor.nic;
 
     document.getElementById('phone').textContent =
-        donor.PHONE || '-';
+        donor.phone || '-';
 
     document.getElementById('email').textContent =
-        donor.EMAIL || '-';
+        donor.email || '-';
 
     document.getElementById('bloodGroup').textContent =
-        donor.BLOOD_GROUP;
+        donor.blood_group;
 
     document.getElementById('donorStatus').textContent =
-        donor.STATUS;
+        donor.status;
 
     document.getElementById('registrationDate').textContent =
-        formatDate(donor.REGISTRATION_DATE);
+        formatDate(donor.registration_date);
 }
 
 
