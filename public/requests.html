@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Hospital Requests - LifeLine Connect</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>LifeLine Connect</h2>
+
+        <a href="index.html">Dashboard</a>
+
+        <a href="donors.html">Donors</a>
+
+        <a href="camps.html">Camps</a>
+
+        <a href="inventory.html">
+            Blood Inventory
+        </a>
+
+        <a href="requests.html"
+           class="active">
+            Hospital Requests
+        </a>
+
+        <a href="feedback.html">
+            Feedback
+        </a>
+
+        <a href="emergency.html">
+            Emergency Appeals
+        </a>
+
+    </div>
+
+
+    <div class="main-content">
+
+        <div class="page-header">
+
+            <div>
+
+                <h1>Hospital Requests</h1>
+
+                <p>
+                    Monitor blood requests from hospitals
+                    and distribution status.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Statistics -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <span>Total Requests</span>
+
+                <h2 id="totalRequests">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>Pending</span>
+
+                <h2 id="pendingRequests">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>Urgent / Critical</span>
+
+                <h2 id="urgentRequests">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>Completed</span>
+
+                <h2 id="completedRequests">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <!-- Search -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>Blood Requests</h2>
+
+                <input
+                    type="text"
+                    id="requestSearch"
+                    placeholder="Search requests..."
+                    onkeyup="filterRequests()">
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Request ID</th>
+
+                            <th>Hospital</th>
+
+                            <th>Blood Group</th>
+
+                            <th>Required Units</th>
+
+                            <th>Urgency</th>
+
+                            <th>Status</th>
+
+                            <th>Required Date</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="requestTableBody">
+
+                        <tr>
+
+                            <td colspan="8">
+                                Loading requests...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/requests.js"></script>
+
+</body>
+
+</html>

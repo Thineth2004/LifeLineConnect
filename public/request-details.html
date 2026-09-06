@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Request Details - LifeLine Connect</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>LifeLine Connect</h2>
+
+        <a href="index.html">Dashboard</a>
+        <a href="donors.html">Donors</a>
+        <a href="camps.html">Camps</a>
+
+        <a href="inventory.html">
+            Blood Inventory
+        </a>
+
+        <a href="requests.html"
+           class="active">
+            Hospital Requests
+        </a>
+
+        <a href="feedback.html">
+            Feedback
+        </a>
+
+        <a href="emergency.html">
+            Emergency Appeals
+        </a>
+
+    </div>
+
+
+    <div class="main-content">
+
+        <div class="page-header">
+
+            <div>
+
+                <h1 id="requestTitle">
+                    Request Details
+                </h1>
+
+                <p id="requestSubtitle">
+                    Hospital blood request information.
+                </p>
+
+            </div>
+
+
+            <button
+                class="btn-secondary"
+                onclick="goBack()">
+
+                ← Back to Requests
+
+            </button>
+
+        </div>
+
+
+        <!-- Request -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Request Information
+                </h2>
+
+            </div>
+
+
+            <div class="donor-profile">
+
+                <div class="profile-item">
+
+                    <span>Request ID</span>
+
+                    <strong id="requestId">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <span>Blood Group</span>
+
+                    <strong id="bloodGroup">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <span>Quantity Required</span>
+
+                    <strong id="quantityRequired">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <span>Urgency</span>
+
+                    <strong id="urgency">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <span>Status</span>
+
+                    <strong id="requestStatus">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <span>Request Date</span>
+
+                    <strong id="requestDate">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <span>Required Date</span>
+
+                    <strong id="requiredDate">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <span>Remarks</span>
+
+                    <strong id="remarks">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Hospital -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Hospital Information
+                </h2>
+
+            </div>
+
+
+            <div class="donor-profile">
+
+                <div class="profile-item">
+
+                    <span>Hospital ID</span>
+
+                    <strong id="hospitalId">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <span>Hospital Name</span>
+
+                    <strong id="hospitalName">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <span>Address</span>
+
+                    <strong id="hospitalAddress">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <span>City</span>
+
+                    <strong id="hospitalCity">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <span>Contact Person</span>
+
+                    <strong id="contactPerson">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <span>Phone</span>
+
+                    <strong id="hospitalPhone">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Distribution -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Blood Distribution
+                </h2>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Distribution ID</th>
+
+                            <th>Unit ID</th>
+
+                            <th>Blood Group</th>
+
+                            <th>Date</th>
+
+                            <th>Quantity</th>
+
+                            <th>Remarks</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="distributionTableBody">
+
+                        <tr>
+
+                            <td colspan="6">
+                                Loading distributions...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/request-details.js"></script>
+
+</body>
+
+</html>
