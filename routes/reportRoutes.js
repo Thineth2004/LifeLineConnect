@@ -241,5 +241,63 @@ router.get('/hospital-requests', async (req, res) => {
 
 });
 
+router.get('/current-inventory', async (req, res) => {
+    let connection;
+    let resultSet;
+
+    try {
+        connection = await getOracleConnection();
+
+        const result = await connection.execute(
+            `
+            BEGIN
+                get_current_inventory_report(:result);
+            END;
+            `,
+            {
+                result: {
+                    dir: oracledb.BIND_OUT,
+                    type: oracledb.CURSOR
+                }
+            }
+        );
+
+        resultSet = result.outBinds.result;
+
+        const rows = [];
+        let row;
+
+        while ((row = await resultSet.getRow())) {
+            rows.push({
+                blood_group: row[0],
+                total_units: row[1],
+                available_units: row[2],
+                reserved_units: row[3],
+                distributed_units: row[4],
+                expired_units: row[5]
+            });
+        }
+
+        res.json(rows);
+
+    } catch (error) {
+        console.error(error);
+
+        res.status(500).json({
+            error: 'Failed to generate current inventory report'
+        });
+
+    } finally {
+        if (resultSet) {
+            await resultSet.close();
+        }
+
+        if (connection) {
+            await connection.close();
+        }
+    }
+});
+
+
 
 module.exports = router;

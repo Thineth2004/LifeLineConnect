@@ -318,4 +318,51 @@ END;
 
 PRINT rc;
 
+CREATE OR REPLACE PROCEDURE get_current_inventory_report (
+    p_result OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+    OPEN p_result FOR
+        SELECT
+            bg.blood_group,
+            COUNT(bu.unit_id) AS total_units,
+            SUM(CASE
+                WHEN bu.status = 'Available'
+                AND bu.expiry_date >= TRUNC(SYSDATE)
+                THEN 1 ELSE 0
+            END) AS available_units,
+            SUM(CASE
+                WHEN bu.status = 'Reserved'
+                AND bu.expiry_date >= TRUNC(SYSDATE)
+                THEN 1 ELSE 0
+            END) AS reserved_units,
+            SUM(CASE
+                WHEN bu.status = 'Distributed'
+                THEN 1 ELSE 0
+            END) AS distributed_units,
+            SUM(CASE
+                WHEN bu.status = 'Expired'
+                OR bu.expiry_date < TRUNC(SYSDATE)
+                THEN 1 ELSE 0
+            END) AS expired_units
+        FROM blood_group bg
+        LEFT JOIN blood_unit bu
+            ON bg.blood_group_id = bu.blood_group_id
+        GROUP BY
+            bg.blood_group
+        ORDER BY
+            bg.blood_group;
+END;
+/
+
+VARIABLE rc REFCURSOR;
+
+BEGIN
+    get_current_inventory_report(:rc);
+END;
+/
+
+PRINT rc;
+
 
