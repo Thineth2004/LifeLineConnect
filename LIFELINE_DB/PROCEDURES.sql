@@ -365,4 +365,132 @@ END;
 
 PRINT rc;
 
+CREATE OR REPLACE PROCEDURE get_expiring_units_report (
+    p_days   IN NUMBER,
+    p_result OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+    OPEN p_result FOR
+        SELECT
+            bu.unit_id,
+            bg.blood_group,
+            bu.collection_date,
+            bu.expiry_date,
+            bu.status,
+            bu.storage_location
+        FROM blood_unit bu
+        JOIN blood_group bg
+            ON bu.blood_group_id = bg.blood_group_id
+        WHERE bu.expiry_date >= TRUNC(SYSDATE)
+          AND bu.expiry_date <= TRUNC(SYSDATE) + p_days
+          AND bu.status IN ('Available', 'Reserved')
+        ORDER BY
+            bu.expiry_date;
+END;
+/
+
+VARIABLE rc REFCURSOR;
+
+BEGIN
+    get_expiring_units_report(30, :rc);
+END;
+/
+
+PRINT rc;
+
+CREATE OR REPLACE PROCEDURE get_donor_history_report (
+    p_donor_id IN VARCHAR2,
+    p_result   OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+    OPEN p_result FOR
+        SELECT
+            d.donor_id,
+            d.first_name || ' ' || d.last_name AS donor_name,
+            bg.blood_group,
+            d.status AS donor_status,
+            check_donor_eligibility(d.donor_id) AS eligibility,
+            dn.donation_id,
+            dn.donation_date,
+            dn.quantity_ml,
+            c.camp_name,
+            v.venue_name,
+            dn.remarks
+        FROM donor d
+        JOIN blood_group bg
+            ON d.blood_group_id = bg.blood_group_id
+        LEFT JOIN donation dn
+            ON d.donor_id = dn.donor_id
+        LEFT JOIN camp c
+            ON dn.camp_id = c.camp_id
+        LEFT JOIN venue v
+            ON c.venue_id = v.venue_id
+        WHERE d.donor_id = p_donor_id
+        ORDER BY dn.donation_date DESC;
+END;
+/
+
+VARIABLE rc REFCURSOR;
+
+BEGIN
+    get_donor_history_report('D001', :rc);
+END;
+/
+
+PRINT rc;
+
+CREATE OR REPLACE PROCEDURE get_hospital_requests_report (
+    p_result OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+    OPEN p_result FOR
+        SELECT
+            br.request_id,
+            h.hospital_name,
+            bg.blood_group,
+            br.request_date,
+            br.quantity_required,
+            NVL(SUM(bd.quantity), 0) AS units_distributed,
+            br.urgency,
+            br.status,
+            br.required_date,
+            br.remarks
+        FROM blood_request br
+        JOIN hospital h
+            ON br.hospital_id = h.hospital_id
+        JOIN blood_group bg
+            ON br.blood_group_id = bg.blood_group_id
+        LEFT JOIN blood_distribution bd
+            ON br.request_id = bd.request_id
+        GROUP BY
+            br.request_id,
+            h.hospital_name,
+            bg.blood_group,
+            br.request_date,
+            br.quantity_required,
+            br.urgency,
+            br.status,
+            br.required_date,
+            br.remarks
+        ORDER BY
+            CASE br.urgency
+                WHEN 'Critical' THEN 1
+                WHEN 'Urgent' THEN 2
+                WHEN 'Normal' THEN 3
+            END,
+            br.request_date DESC;
+END;
+/
+
+VARIABLE rc REFCURSOR;
+
+BEGIN
+    get_hospital_requests_report(:rc);
+END;
+/
+
+PRINT rc;
 
