@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Blood Inventory - LifeLine Connect</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>LifeLine Connect</h2>
+
+        <a href="index.html">Dashboard</a>
+
+        <a href="donors.html">Donors</a>
+
+        <a href="camps.html">Camps</a>
+
+        <a href="inventory.html"
+           class="active">
+            Blood Inventory
+        </a>
+
+        <a href="requests.html">
+            Hospital Requests
+        </a>
+
+        <a href="feedback.html">
+            Feedback
+        </a>
+
+        <a href="emergency.html">
+            Emergency Appeals
+        </a>
+
+    </div>
+
+
+    <div class="main-content">
+
+        <div class="page-header">
+
+            <div>
+
+                <h1>Blood Inventory</h1>
+
+                <p>
+                    Monitor blood units, availability
+                    and expiry information.
+                </p>
+
+            </div>
+
+            <button
+                class="btn-secondary"
+                onclick="updateExpiredUnits()">
+
+                Update Expired Units
+
+            </button>
+
+        </div>
+
+
+        <!-- Inventory Statistics -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <span>Total Units</span>
+
+                <h2 id="totalUnits">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>Available</span>
+
+                <h2 id="availableUnits">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>Reserved</span>
+
+                <h2 id="reservedUnits">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>Expired</span>
+
+                <h2 id="expiredUnits">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <!-- Blood Group Summary -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Inventory by Blood Group
+                </h2>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Blood Group</th>
+
+                            <th>Total</th>
+
+                            <th>Available</th>
+
+                            <th>Reserved</th>
+
+                            <th>Distributed</th>
+
+                            <th>Expired</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="summaryTableBody">
+
+                        <tr>
+
+                            <td colspan="6">
+                                Loading inventory...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- Blood Units -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Blood Units
+                </h2>
+
+                <input
+                    type="text"
+                    id="inventorySearch"
+                    placeholder="Search blood units..."
+                    onkeyup="filterInventory()">
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Unit ID</th>
+
+                            <th>Donation ID</th>
+
+                            <th>Blood Group</th>
+
+                            <th>Collection Date</th>
+
+                            <th>Expiry Date</th>
+
+                            <th>Status</th>
+
+                            <th>Storage Location</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="inventoryTableBody">
+
+                        <tr>
+
+                            <td colspan="7">
+                                Loading blood units...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/inventory.js"></script>
+
+</body>
+
+</html>

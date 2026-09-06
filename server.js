@@ -12,6 +12,7 @@ const {
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const donorRoutes = require('./routes/donorRoutes');
 const campRoutes = require('./routes/campRoutes');
+const inventoryRoutes = require('./routes/inventoryRoutes');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/donors', donorRoutes);
 app.use('/api/camps', campRoutes);
+app.use('/api/inventory', inventoryRoutes);
 
 
 app.get('/api/test', async (req, res) => {
