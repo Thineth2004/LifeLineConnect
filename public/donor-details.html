@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Donor Details - LifeLine Connect</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>LifeLine Connect</h2>
+
+        <a href="index.html">Dashboard</a>
+        <a href="donors.html" class="active">Donors</a>
+        <a href="camps.html">Camps</a>
+        <a href="inventory.html">Blood Inventory</a>
+        <a href="requests.html">Hospital Requests</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="emergency.html">Emergency Appeals</a>
+
+    </div>
+
+
+    <div class="main-content">
+
+        <div class="page-header">
+
+            <div>
+                <h1>Donor Details</h1>
+                <p>View donor profile, health information and donation history.</p>
+            </div>
+
+            <button class="btn-secondary" onclick="goBack()">
+                ← Back to Donors
+            </button>
+
+        </div>
+
+
+        <!-- Donor Profile -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+                <h2>Donor Profile</h2>
+            </div>
+
+            <div class="donor-profile">
+
+                <div class="profile-item">
+                    <span>Donor ID</span>
+                    <strong id="donorId">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Name</span>
+                    <strong id="donorName">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Date of Birth</span>
+                    <strong id="dateOfBirth">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Gender</span>
+                    <strong id="gender">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>NIC</span>
+                    <strong id="nic">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Phone</span>
+                    <strong id="phone">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Email</span>
+                    <strong id="email">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Blood Group</span>
+                    <strong id="bloodGroup">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Status</span>
+                    <strong id="donorStatus">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Registration Date</span>
+                    <strong id="registrationDate">-</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Eligibility -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+                <h2>Donation Eligibility</h2>
+            </div>
+
+            <div class="eligibility-box">
+
+                <div>
+                    <span>Current Eligibility</span>
+                    <h2 id="eligibility">Checking...</h2>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Health Information -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+                <h2>Health Records</h2>
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Check Date</th>
+                            <th>Weight</th>
+                            <th>Blood Pressure</th>
+                            <th>Hemoglobin</th>
+                            <th>Medical Conditions</th>
+                            <th>Eligible</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="healthTableBody">
+                        <tr>
+                            <td colspan="7">Loading health records...</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- Donation History -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+                <h2>Donation History</h2>
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Donation ID</th>
+                            <th>Donation Date</th>
+                            <th>Camp</th>
+                            <th>Venue</th>
+                            <th>Quantity</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="donationTableBody">
+                        <tr>
+                            <td colspan="6">Loading donation history...</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/donor-details.js"></script>
+
+</body>
+
+</html>

@@ -69,6 +69,65 @@ router.get('/', async (req, res) => {
 
 });
 
+router.post('/', async (req, res) => {
+
+    let connection;
+
+    try {
+
+        connection = await getOracleConnection();
+
+        await connection.execute(
+            `BEGIN
+                register_donor(
+                    :donor_id,
+                    :first_name,
+                    :last_name,
+                    TO_DATE(:date_of_birth, 'YYYY-MM-DD'),
+                    :gender,
+                    :nic,
+                    :phone,
+                    :email,
+                    :address,
+                    :blood_group_id
+                );
+            END;`,
+            {
+                donor_id: req.body.donor_id,
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
+                date_of_birth: req.body.date_of_birth,
+                gender: req.body.gender,
+                nic: req.body.nic,
+                phone: req.body.phone,
+                email: req.body.email,
+                address: req.body.address,
+                blood_group_id: req.body.blood_group_id
+            }
+        );
+
+        res.status(201).json({
+            message: 'Donor registered successfully'
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            error: error.message
+        });
+
+    } finally {
+
+        if (connection) {
+            await connection.close();
+        }
+
+    }
+
+});
+
 
 // Get a single donor
 router.get('/:id', async (req, res) => {
@@ -142,6 +201,37 @@ router.get('/:id', async (req, res) => {
 
     }
 
+});
+
+router.get('/:id/eligibility', async (req, res) => {
+    let connection;
+
+    try {
+        connection = await getOracleConnection();
+
+        const result = await connection.execute(
+            `SELECT check_donor_eligibility(:donor_id) AS eligibility
+             FROM dual`,
+            {
+                donor_id: req.params.id
+            }
+        );
+
+        res.json({
+            eligibility: result.rows[0][0]
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            error: 'Failed to check donor eligibility'
+        });
+
+    } finally {
+        if (connection) {
+            await connection.close();
+        }
+    }
 });
 
 

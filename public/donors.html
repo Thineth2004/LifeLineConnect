@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Donors - LifeLine Connect</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>LifeLine</h2>
+            <span>CONNECT</span>
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Dashboard
+            </a>
+
+            <a href="donors.html" class="active">
+                Donors
+            </a>
+
+            <a href="camps.html">
+                Camps
+            </a>
+
+            <a href="inventory.html">
+                Blood Inventory
+            </a>
+
+            <a href="requests.html">
+                Hospital Requests
+            </a>
+
+            <a href="feedback.html">
+                Feedback
+            </a>
+
+            <a href="emergency.html">
+                Emergency Appeals
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <h1>Donor Management</h1>
+                <p>Manage registered blood donors</p>
+            </div>
+
+            <button
+                class="primary-button"
+                onclick="openDonorForm()">
+
+                + Register Donor
+
+            </button>
+
+        </header>
+
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <h2>Registered Donors</h2>
+
+                <input
+                    type="text"
+                    id="searchDonor"
+                    placeholder="Search donors..."
+                    onkeyup="filterDonors()">
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Blood Group</th>
+                            <th>Phone</th>
+                            <th>Status</th>
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="donorTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- Donor Form Modal -->
+
+<div id="donorModal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>Register New Donor</h2>
+
+            <button onclick="closeDonorForm()">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="donorForm">
+
+            <div class="form-grid">
+
+                <input
+                    type="text"
+                    id="donorId"
+                    placeholder="Donor ID"
+                    required>
+
+                <input
+                    type="text"
+                    id="firstName"
+                    placeholder="First Name"
+                    required>
+
+                <input
+                    type="text"
+                    id="lastName"
+                    placeholder="Last Name"
+                    required>
+
+                <input
+                    type="date"
+                    id="dateOfBirth"
+                    required>
+
+                <select id="gender">
+
+                    <option value="">
+                        Select Gender
+                    </option>
+
+                    <option value="Male">
+                        Male
+                    </option>
+
+                    <option value="Female">
+                        Female
+                    </option>
+
+                </select>
+
+
+                <input
+                    type="text"
+                    id="nic"
+                    placeholder="NIC"
+                    required>
+
+                <input
+                    type="text"
+                    id="phone"
+                    placeholder="Phone">
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Email">
+
+                <input
+                    type="text"
+                    id="address"
+                    placeholder="Address">
+
+                <select id="bloodGroup" required>
+
+                    <option value="">
+                        Select Blood Group
+                    </option>
+
+                    <option value="BG01">O+</option>
+                    <option value="BG02">O-</option>
+                    <option value="BG03">A+</option>
+                    <option value="BG04">A-</option>
+                    <option value="BG05">B+</option>
+                    <option value="BG06">B-</option>
+                    <option value="BG07">AB+</option>
+                    <option value="BG08">AB-</option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="primary-button">
+
+                Register Donor
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="js/donors.js"></script>
+
+</body>
+
+</html>
