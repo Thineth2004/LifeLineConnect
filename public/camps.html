@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Camp Management - LifeLine Connect</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <h2>LifeLine Connect</h2>
+
+        <a href="index.html">Dashboard</a>
+        <a href="donors.html">Donors</a>
+        <a href="camps.html" class="active">Camps</a>
+        <a href="inventory.html">Blood Inventory</a>
+        <a href="requests.html">Hospital Requests</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="emergency.html">Emergency Appeals</a>
+
+    </div>
+
+
+    <!-- Main Content -->
+
+    <div class="main-content">
+
+        <div class="page-header">
+
+            <div>
+                <h1>Blood Donation Camps</h1>
+                <p>Manage donation camps and their venues.</p>
+            </div>
+
+        </div>
+
+
+        <!-- Camp Statistics -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <span>Total Camps</span>
+                <h2 id="totalCamps">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>Upcoming Camps</span>
+                <h2 id="upcomingCamps">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>Completed Camps</span>
+                <h2 id="completedCamps">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>Cancelled Camps</span>
+                <h2 id="cancelledCamps">0</h2>
+            </div>
+
+        </div>
+
+
+        <!-- Search -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>Camp Catalogue</h2>
+
+                <input
+                    type="text"
+                    id="campSearch"
+                    placeholder="Search camps..."
+                    onkeyup="filterCamps()"
+                >
+
+            </div>
+
+
+            <!-- Camp Table -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Camp ID</th>
+                            <th>Camp Name</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Venue</th>
+                            <th>City</th>
+                            <th>Organizer</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="campTableBody">
+
+                        <tr>
+                            <td colspan="9">
+                                Loading camps...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/camps.js"></script>
+
+</body>
+
+</html>

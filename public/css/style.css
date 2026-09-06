@@ -342,3 +342,33 @@ td {
     border-radius: 6px;
     cursor: pointer;
 }
+
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-scheduled {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-completed {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.status-cancelled {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.btn-small {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
