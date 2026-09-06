@@ -5,7 +5,10 @@ const cors = require('cors');
 const path = require('path');
 
 const { getOracleConnection } = require('./config/oracle');
-const { connectMongoDB } = require('./config/mongodb');
+const {
+    connectMongoDB,
+    getDatabase
+} = require('./config/mongodb');
 
 const app = express();
 
@@ -48,6 +51,32 @@ app.get('/api/test', async (req, res) => {
     }
 });
 
+app.get('/api/mongo-test', async (req, res) => {
+
+    try {
+
+        const db = getDatabase();
+
+        const collections = await db
+            .listCollections()
+            .toArray();
+
+        res.json({
+            mongodb: 'MongoDB connection successful',
+            collections: collections.map(c => c.name)
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            error: error.message
+        });
+
+    }
+
+});
 
 async function startServer() {
 
