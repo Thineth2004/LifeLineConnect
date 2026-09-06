@@ -274,3 +274,48 @@ WHERE donor_id = 'D021';
 SELECT check_donor_eligibility('D021')
 FROM dual;
 
+CREATE OR REPLACE PROCEDURE get_blood_collection_report (
+    p_result OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+
+    OPEN p_result FOR
+        SELECT
+            c.camp_id,
+            c.camp_name,
+            bg.blood_group,
+            COUNT(bu.unit_id) AS units_collected,
+            SUM(d.quantity_ml) AS total_ml
+        FROM camp c
+        JOIN donation d
+            ON c.camp_id = d.camp_id
+        JOIN blood_unit bu
+            ON d.donation_id = bu.donation_id
+        JOIN blood_group bg
+            ON bu.blood_group_id = bg.blood_group_id
+        GROUP BY
+            c.camp_id,
+            c.camp_name,
+            bg.blood_group
+        ORDER BY
+            c.camp_id,
+            bg.blood_group;
+
+END;
+/
+
+SELECT object_name, status
+FROM user_objects
+WHERE object_name = 'GET_BLOOD_COLLECTION_REPORT';
+
+VARIABLE rc REFCURSOR;
+
+BEGIN
+    get_blood_collection_report(:rc);
+END;
+/
+
+PRINT rc;
+
+

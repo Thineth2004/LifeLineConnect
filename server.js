@@ -16,6 +16,7 @@ const inventoryRoutes = require('./routes/inventoryRoutes');
 const requestRoutes = require('./routes/requestRoutes');
 const feedbackRoutes = require('./routes/feedbackRoutes');
 const emergencyRoutes = require('./routes/emergencyRoutes');
+const reportRoutes = require('./routes/reportRoutes');
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use('/api/inventory', inventoryRoutes);
 app.use('/api/requests', requestRoutes);
 app.use('/api/feedback', feedbackRoutes);
 app.use('/api/emergency', emergencyRoutes);
+app.use('/api/reports', reportRoutes);
 
 
 app.get('/api/test', async (req, res) => {
