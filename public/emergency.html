@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Emergency Appeals - LifeLine Connect</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>LifeLine Connect</h2>
+
+        <a href="index.html">Dashboard</a>
+        <a href="donors.html">Donors</a>
+        <a href="camps.html">Camps</a>
+        <a href="inventory.html">Blood Inventory</a>
+        <a href="requests.html">Hospital Requests</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="emergency.html" class="active">Emergency Appeals</a>
+
+    </div>
+
+
+    <div class="main-content">
+
+        <div class="page-header">
+
+            <div>
+
+                <h1>Emergency Blood Appeals</h1>
+
+                <p>
+                    Emergency blood requirements and donor communication
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Statistics -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <h3>Active Appeals</h3>
+
+                <p id="activeAppeals">0</p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Critical Appeals</h3>
+
+                <p id="criticalAppeals">0</p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Units Required</h3>
+
+                <p id="unitsRequired">0</p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Search -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>Search Emergency Appeals</h2>
+
+                <div>
+
+                    <input
+                        type="text"
+                        id="emergencySearch"
+                        placeholder="Search keyword..."
+                    >
+
+                    <button
+                        class="btn-small"
+                        onclick="searchAppeals()"
+                    >
+                        Search
+                    </button>
+
+                    <button
+                        class="btn-small"
+                        onclick="loadAppeals()"
+                    >
+                        Reset
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Appeals -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>Emergency Appeals</h2>
+
+            </div>
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Appeal ID</th>
+                        <th>Title</th>
+                        <th>Blood Group</th>
+                        <th>Hospital</th>
+                        <th>Urgency</th>
+                        <th>Required</th>
+                        <th>Available</th>
+                        <th>Status</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="appealsTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- Appeal Details -->
+
+        <div
+            class="panel"
+            id="appealDetails"
+            style="display: none;"
+        >
+
+            <div class="panel-header">
+
+                <h2 id="detailTitle">
+                    Emergency Appeal
+                </h2>
+
+            </div>
+
+
+            <div id="appealInformation">
+
+            </div>
+
+
+            <h3>Message</h3>
+
+            <p id="detailMessage"></p>
+
+
+            <h3>Discussion / Q&A</h3>
+
+            <div id="discussionList">
+
+            </div>
+
+
+            <div style="margin-top: 20px;">
+
+                <input
+                    type="text"
+                    id="discussionUser"
+                    placeholder="User ID"
+                >
+
+                <input
+                    type="text"
+                    id="discussionMessage"
+                    placeholder="Write a message..."
+                >
+
+                <button
+                    class="btn-small"
+                    onclick="addDiscussion()"
+                >
+                    Send
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/emergency.js"></script>
+
+</body>
+
+</html>
