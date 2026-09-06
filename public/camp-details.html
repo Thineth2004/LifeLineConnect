@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Camp Details - LifeLine Connect</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <h2>LifeLine Connect</h2>
+
+        <a href="index.html">Dashboard</a>
+        <a href="donors.html">Donors</a>
+        <a href="camps.html" class="active">Camps</a>
+        <a href="inventory.html">Blood Inventory</a>
+        <a href="requests.html">Hospital Requests</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="emergency.html">Emergency Appeals</a>
+
+    </div>
+
+
+    <!-- Main Content -->
+
+    <div class="main-content">
+
+        <div class="page-header">
+
+            <div>
+                <h1 id="campTitle">Camp Details</h1>
+                <p id="campSubtitle">
+                    View donation camp information.
+                </p>
+            </div>
+
+            <button class="btn-secondary" onclick="goBack()">
+                ← Back to Camps
+            </button>
+
+        </div>
+
+
+        <!-- Camp Information -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+                <h2>Camp Information</h2>
+            </div>
+
+            <div class="donor-profile">
+
+                <div class="profile-item">
+                    <span>Camp ID</span>
+                    <strong id="campId">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Camp Name</span>
+                    <strong id="campName">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Camp Date</span>
+                    <strong id="campDate">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Start Time</span>
+                    <strong id="startTime">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>End Time</span>
+                    <strong id="endTime">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Organizer</span>
+                    <strong id="organizer">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Status</span>
+                    <strong id="campStatus">-</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Venue Information -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+                <h2>Venue Information</h2>
+            </div>
+
+            <div class="donor-profile">
+
+                <div class="profile-item">
+                    <span>Venue ID</span>
+                    <strong id="venueId">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Venue Name</span>
+                    <strong id="venueName">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Address</span>
+                    <strong id="venueAddress">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>City</span>
+                    <strong id="venueCity">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Capacity</span>
+                    <strong id="venueCapacity">-</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Contact Number</span>
+                    <strong id="venueContact">-</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Assigned Staff and Volunteers -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+                <h2>Staff & Volunteer Assignments</h2>
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Assignment ID</th>
+                            <th>Person</th>
+                            <th>Type</th>
+                            <th>Role</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="assignmentTableBody">
+
+                        <tr>
+                            <td colspan="4">
+                                Loading assignments...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- Donations -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+                <h2>Donations Collected</h2>
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Donation ID</th>
+                            <th>Donor ID</th>
+                            <th>Donor Name</th>
+                            <th>Blood Group</th>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="donationTableBody">
+
+                        <tr>
+                            <td colspan="6">
+                                Loading donations...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/camp-details.js"></script>
+
+</body>
+
+</html>
