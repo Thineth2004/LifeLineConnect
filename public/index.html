@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LifeLine Connect</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <h2>LifeLine</h2>
+                <span>CONNECT</span>
+            </div>
+
+            <nav>
+
+                <a href="index.html" class="active">
+                    Dashboard
+                </a>
+
+                <a href="donors.html">
+                    Donors
+                </a>
+
+                <a href="camps.html">
+                    Camps
+                </a>
+
+                <a href="inventory.html">
+                    Blood Inventory
+                </a>
+
+                <a href="requests.html">
+                    Hospital Requests
+                </a>
+
+                <a href="feedback.html">
+                    Feedback
+                </a>
+
+                <a href="emergency.html">
+                    Emergency Appeals
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Blood Bank Management Portal</p>
+                </div>
+
+                <div class="user-info">
+                    Administrator
+                </div>
+
+            </header>
+
+
+            <!-- Statistics -->
+
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div>
+                        <p>Total Donors</p>
+                        <h2 id="totalDonors">-</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div>
+                        <p>Available Blood Units</p>
+                        <h2 id="availableUnits">-</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div>
+                        <p>Upcoming Camps</p>
+                        <h2 id="upcomingCamps">-</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div>
+                        <p>Pending Requests</p>
+                        <h2 id="pendingRequests">-</h2>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Dashboard Sections -->
+
+            <section class="dashboard-grid">
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <h2>Blood Inventory</h2>
+
+                        <a href="inventory.html">
+                            View All
+                        </a>
+
+                    </div>
+
+                    <div id="inventorySummary">
+                        Loading...
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <h2>Upcoming Camps</h2>
+
+                        <a href="camps.html">
+                            View All
+                        </a>
+
+                    </div>
+
+                    <div id="campSummary">
+                        Loading...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <h2>Recent Hospital Requests</h2>
+
+                    <a href="requests.html">
+                        View All
+                    </a>
+
+                </div>
+
+                <div id="requestSummary">
+                    Loading...
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
